@@ -20,6 +20,18 @@ export class ClientsService {
    public get collection(): BehaviorSubject<Client[]>{
      return this.collection$;
    }
+      /**
+    * get client id by clientname
+    */
+    public getgetClientByName(name: string): any{
+    let id = 0;
+    this.collection.value.forEach(client => {
+      if(client.company === name){
+        id = client.id;
+      }
+    })
+    return id;
+    }
     /**
     * refresh collection
     */

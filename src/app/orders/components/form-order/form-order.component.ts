@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
 import { StateOrder } from 'src/app/core/enums/state-order';
@@ -11,14 +11,14 @@ import { ClientsService } from 'src/app/core/services/clients.service';
   templateUrl: './form-order.component.html',
   styleUrls: ['./form-order.component.scss'],
 })
-export class FormOrderComponent implements OnInit, OnDestroy {
+export class FormOrderComponent implements OnInit {
   public form!: FormGroup;
   public states = Object.values(StateOrder);
   public errorMsg = false;
   public clients$: Subject<Client[]>;
   private sub!: Subscription;
   @Input() init!: Order;
-  @Output() submited: EventEmitter<{order: Order, client: Client}> = new EventEmitter<{order: Order, client: Client}>();
+  @Output() submited: EventEmitter<Order> = new EventEmitter<Order>();
   constructor(private fb: FormBuilder, private clientsService: ClientsService) {
     this.init = new Order();
     this.clients$ = this.clientsService.collection;
@@ -37,7 +37,7 @@ export class FormOrderComponent implements OnInit, OnDestroy {
       customerCompany: [this.init.customerCompany]
     });
   }
-  public onSubmit(): void {
+  public register(): void {
     this.errorMsg = false;
     for (const field in this.form.controls) {
       const control = this.form.get(field);
@@ -46,18 +46,7 @@ export class FormOrderComponent implements OnInit, OnDestroy {
       }
     }
     if (!this.errorMsg) {
-      this.clientsService.refreshCollection();
-      this.sub = this.clients$.subscribe((clients) =>{
-        clients.forEach(client => {
-          if(this.form.controls['customerCompany'].value === client.company){
-            this.submited.emit({order: this.form.value, client: client});
-          }
-        });
-      })
+      this.submited.emit(this.form.value);
     }
-  }
-
-  ngOnDestroy(){
-    this.sub.unsubscribe();
   }
 }

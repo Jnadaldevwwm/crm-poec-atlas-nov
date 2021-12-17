@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Client } from 'src/app/core/models/client';
 import { Order } from 'src/app/core/models/order';
 import { ClientsService } from 'src/app/core/services/clients.service';
 import { OrdersService } from 'src/app/core/services/orders.service';
@@ -15,17 +14,19 @@ export class PageAddOrderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public action(item: {order: Order, client: Client}): void {
-    item.order.customerId = item.client.id;
-    //console.log(item.order);
+  public action(item: Order): void {
+    // this.clientService.collection.value.forEach(client => {
+    //   if(client.company === item.customerCompany){
+    //     item.customerId = client.id;
+    //   }
+    // });
+    console.log(this.clientService.getgetClientByName(item.customerCompany));
 
-
-    this.orderService.add(item.order).subscribe((data)=>{
-      console.log(data);
+    item.customerId = this.clientService.getgetClientByName(item.customerCompany);
+    this.orderService.add(item).subscribe((data)=>{
      this.router.navigate(['orders']);
-
     })
-  }
+  };
 
 
 }
