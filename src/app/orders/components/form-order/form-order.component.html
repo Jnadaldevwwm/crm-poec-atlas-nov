@@ -1,0 +1,67 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="client" class="form-label">Customer Name</label>
+    <input formControlName="customerCompany" class="form-control" list="datalistOptions" id="client" autocomplete="off">
+    <datalist id="datalistOptions" *ngIf="clients$ | async as clients">
+      <option *ngFor="let item of clients" [value]="item.company">
+    </datalist>
+
+    <div *ngIf="form.controls['customerCompany'].invalid && (form.controls['customerCompany'].touched || errorMsg)"
+      class="alert alert-danger">invalid field</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="Description" class="form-label">Description</label>
+    <input formControlName="label" type="text" class="form-control" id="Description" autocomplete="off">
+    <div *ngIf="form.controls['label'].invalid && (form.controls['label'].touched || errorMsg)"
+      class="alert alert-danger">invalid
+      field</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="Type" class="form-label">Type</label>
+    <input formControlName="type" type="text" class="form-control" id="Type" autocomplete="off">
+    <div *ngIf="form.controls['type'].invalid && (form.controls['type'].touched || errorMsg)"
+      class="alert alert-danger">
+      invalid field
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="tjm" class="form-label">Unit Price</label>
+    <input formControlName="adrEt" type="number" class="form-control" id="tjm" autocomplete="off">
+    <div *ngIf="form.controls['adrEt'].invalid && (form.controls['adrEt'].touched || errorMsg)"
+      class="alert alert-danger">invalid
+      field</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="nbdays" class="form-label">Nb Days</label>
+    <input formControlName="numberOfDays" type="number" class="form-control" id="nbdays" autocomplete="off">
+    <div *ngIf="form.controls['numberOfDays'].invalid && (form.controls['numberOfDays'].touched || errorMsg)"
+      class="alert alert-danger">invalid field</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="tva" class="form-label">Tva</label>
+    <input formControlName="tva" type="number" class="form-control" id="tva" autocomplete="off">
+    <div *ngIf="form.controls['tva'].invalid && (form.controls['tva'].touched || errorMsg)" class="alert alert-danger">
+      invalid field
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="status" class="form-label">State</label>
+    <select formControlName="status" class="form-control" id="status" autocomplete="off">
+      <option *ngFor="let state of states" [ngValue]="state">{{ state }}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="Notes" class="form-label">Notes</label>
+    <textarea formControlName="notes" class="form-control" id="Notes"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

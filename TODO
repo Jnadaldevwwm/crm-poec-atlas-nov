@@ -1,0 +1,13 @@
+
+Todo:
+  ✔ Ajouter sur app routing les routes pour le lazy loading de clients, pnf , users @done(21-12-09 16:18)
+  ✔ Ajouter sur clients-routing les routes ppour add, edit et list clients @done(21-12-09 16:19)
+  ✔ Ajouter sur users- routing les routes pour add, edit et list users @done(21-12-09 16:19)
+  ✔ Ajouter sur pnf routing la route pour page-not-found component @done(21-12-09 16:19)
+  ✔ Déplacer les routes sign-in et sign-up depuis app-routing vers login-routing @done(21-12-09 16:15)
+  ✔ Debugger l'applui pour que les routes sign-in et sign-up fonctionnent à nouveau apèrs les avoir déplacer(juste un truc à faire sur AppModule (ordre des imports, penser à regarder la config dans la console du navigateur)) @done(21-12-09 16:15)
+  ✔ faire la partie clients en prenant exemple sur orders @done(21-12-10 15:05)
+  ✔ faire la partie users en prenant exemple sur orders @done(21-12-10 15:05)
+  ✔ créer un autre component btn btn-link que je peux utiliser sur toutes mes vues en chosissant le texte et le lien pour href @done(21-12-10 15:05)
+  ☐ créer un autre component btn btn-action que je peux uitliser sur toutes mes vues en choisissant le texte et l'action (pour l'action, pour l'instant, uniquement un console.log('btn clicked' dans le typescipt du bouton))
+  ☐ créer un autre template de page (gabarit) avec 2 transclusions dans 2 block différents qui se mettent l'un sous l'autre et qui prennent toute la largeur du parent sur un mobile, et qui prenne la moitié de la largeur du parent pour se mettre cote à cote à partir des tablettes. En prenant exemple sur la capture d'écran fournie

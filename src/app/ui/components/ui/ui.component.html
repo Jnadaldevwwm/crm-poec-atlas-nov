@@ -1,0 +1,39 @@
+<div class="d-flex flex-column container-fluid ui p-0 vh-100">
+  <header class="bg-light d-flex">
+    <!-- <button *ngIf="!open; else elseBlock" (click)="toggle()" id="brb">OPEN</button>
+    <ng-template #elseBlock>
+      <button (click)="toggle()" id="brb">close</button>
+    </ng-template> -->
+    <div>
+
+      <span (click)="toggle()">
+        <div *ngIf="!open; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+          <ng-content select=".tr-open" ></ng-content>
+        </ng-template>
+        <ng-template #elseBlock>
+          <ng-content select=".tr-close"></ng-content>
+        </ng-template>
+      </span>
+    </div>
+    <div class="flex-grow-1">
+      <ng-content select=".tr-header"></ng-content>
+    </div>
+  </header>
+  <main class="d-flex flex-row">
+    <aside class="h-100">
+      <nav [ngClass]="{'close-nav': !open}">
+        <ng-content select=".tr-nav"></ng-content>
+      </nav>
+    </aside>
+    <div *ngIf="open" class="shadow position-fixed" (click)="toggle()"></div>
+    <div class="d-flex flex-column flex-grow-1" [ngClass]="{'main': open}">
+      <div class="flex-grow-1">
+        <ng-content select=".tr-content"></ng-content>
+      </div>
+      <footer class="bg-light">
+        <ng-content select=".tr-footer"></ng-content>
+      </footer>
+    </div>
+  </main>
+</div>

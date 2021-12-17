@@ -1,0 +1,12 @@
+.canceled{
+  background: var(--app-error);
+}
+.option{
+  background: var(--app-warning);
+}
+.confirmed{
+  background: var(--app-success);
+}
+.paid{
+  background: var(--app-primary);
+}

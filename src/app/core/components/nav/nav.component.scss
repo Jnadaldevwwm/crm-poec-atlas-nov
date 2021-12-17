@@ -1,0 +1,34 @@
+ul{
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+a{
+  background: var(--app-nav-bg-color);
+  color: var(--app-light);
+  transition: all .2s;
+
+  &:hover,
+  &:focus,
+  &.active{
+    background: var(--app-main-bg-color);
+    color: var(--app-primary);
+  }
+}
+
+.dropMenu{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .2s, padding-left .5s;
+}
+
+.active+.dropMenu{
+  max-height: 200px;
+  display: block;
+  padding-left: 15px;
+}
+hr{
+  margin: 0;
+  background: white;
+}
