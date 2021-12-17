@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Order } from 'src/app/core/models/order';
+import { OrdersService } from 'src/app/core/services/orders.service';
 
 @Component({
   selector: 'app-page-edit-order',
@@ -6,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-edit-order.component.scss']
 })
 export class PageEditOrderComponent implements OnInit {
-
-  constructor() { }
+  public item$!: Observable<Order>;
+  constructor(private route: ActivatedRoute, private ordersService: OrdersService, private router: Router) {
+    this.route.paramMap.subscribe((params)=>{
+      const id = Number(params.get('id'));
+      this.item$ = this.ordersService.getItemById(id);
+    });
+  }
 
   ngOnInit(): void {
+  }
+  action(item: Order): void {
+    console.log(item);
+
+    this.ordersService.update(item).subscribe((data)=>{
+      console.log(data);
+      this.router.navigate(['orders']);
+    })
   }
 
 }

@@ -2,7 +2,7 @@
   <app-tab-light [headers]=headers>
     <tr *ngFor="let item of collection">
       <td>
-        <app-icon-edit (click)="goToEdit()"></app-icon-edit>
+        <app-icon-edit (click)="goToEdit(item.id)"></app-icon-edit>
       </td>
       <td>{{item.customerCompany}}</td>
       <td>{{ item.type }}</td>
@@ -13,10 +13,12 @@
       <td>{{ item.adrEt | total: item.numberOfDays | currency }}</td>
       <td>{{ item.adrEt | total: item.numberOfDays: item.tva | currency }}</td>
       <!-- <td [ngClass]="item.status.toLowerCase()"> -->
-        <td [appState]="item.status">
-        <select (change)="changeState(item, $event)">
-          <option *ngFor="let state of states" [value]="state" [selected]="item.status === state"> {{ state }}</option>
-        </select>
+        <td [appState]="item.status" style="height: 0">
+          <div class="h-100 d-flex align-items-center">
+            <select (change)="changeState(item, $event)" >
+              <option *ngFor="let state of states" [value]="state" [selected]="item.status === state"> {{ state }}</option>
+            </select>
+          </div>
       </td>
     </tr>
   </app-tab-light>

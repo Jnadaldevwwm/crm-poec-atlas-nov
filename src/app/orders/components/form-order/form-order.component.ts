@@ -26,6 +26,7 @@ export class FormOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      id: [this.init.id],
       customerId: [this.init.customerId],
       adrEt: [this.init.adrEt, Validators.required],
       label: [this.init.label, Validators.required],

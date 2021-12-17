@@ -15,12 +15,6 @@ export class PageAddOrderComponent implements OnInit {
   ngOnInit(): void {}
 
   public action(item: Order): void {
-    // this.clientService.collection.value.forEach(client => {
-    //   if(client.company === item.customerCompany){
-    //     item.customerId = client.id;
-    //   }
-    // });
-    console.log(this.clientService.getgetClientByName(item.customerCompany));
 
     item.customerId = this.clientService.getgetClientByName(item.customerCompany);
     this.orderService.add(item).subscribe((data)=>{
