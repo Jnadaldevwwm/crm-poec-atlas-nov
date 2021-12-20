@@ -12,6 +12,7 @@ import { IconNavComponent } from './components/icon-nav/icon-nav.component';
 import { IconNightModeComponent } from './components/icon-night-mode/icon-night-mode.component';
 import { IconEyeComponent } from './components/icon-eye/icon-eye.component';
 import { IconEyeSlashComponent } from './components/icon-eye-slash/icon-eye-slash.component';
+import { IconSignOutComponent } from './components/icon-sign-out/icon-sign-out.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { IconEyeSlashComponent } from './components/icon-eye-slash/icon-eye-slas
     IconDayModeComponent,
     IconNightModeComponent,
     IconEyeComponent,
-    IconEyeSlashComponent
+    IconEyeSlashComponent,
+    IconSignOutComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import { IconEyeSlashComponent } from './components/icon-eye-slash/icon-eye-slas
     IconDayModeComponent,
     IconNightModeComponent,
     IconEyeComponent,
-    IconEyeSlashComponent
+    IconEyeSlashComponent,
+    IconSignOutComponent
   ]
 })
 export class IconsModule { }

@@ -1,0 +1,13 @@
+.signBlock{
+  span{
+    text-transform: capitalize;
+  }
+}
+.signOut{
+  cursor: pointer;
+  color: var(--app-primary);
+  margin-left: 10px;
+  &:hover{
+    color: var(--app-primary-dark);
+  }
+}

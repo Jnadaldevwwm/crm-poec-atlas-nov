@@ -5,8 +5,7 @@ export class User implements UserI{
   grants = RoleUser.USER;
   id!: number;
   mail!: string;
-  password!: string;
-  token!: string;
+ // password!: string;
   username!: string;
 
   constructor(obj?: Partial<User>){

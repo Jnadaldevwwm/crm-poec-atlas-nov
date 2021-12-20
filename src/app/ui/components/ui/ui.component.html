@@ -4,9 +4,8 @@
     <ng-template #elseBlock>
       <button (click)="toggle()" id="brb">close</button>
     </ng-template> -->
-    <div>
-
-      <span (click)="toggle()">
+    <div *ngIf="user">
+      <span (click)="toggle()" >
         <div *ngIf="!open; then thenBlock else elseBlock"></div>
         <ng-template #thenBlock>
           <ng-content select=".tr-open" ></ng-content>
@@ -22,7 +21,7 @@
   </header>
   <main class="d-flex flex-row">
     <aside class="h-100">
-      <nav [ngClass]="{'close-nav': !open}">
+      <nav [ngClass]="{'close-nav': !open || !user}">
         <ng-content select=".tr-nav"></ng-content>
       </nav>
     </aside>

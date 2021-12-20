@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/core/models/user';
+import { UserService } from 'src/app/core/services/user.service';
 
 /**
  * @description
@@ -14,11 +16,16 @@ export class UiComponent implements OnInit {
    * property open is used in toggle function
    */
   public open!: boolean; // Peut être de type undefined ou boolean.
-  constructor() {
+  public user!: User | null;
+  constructor(private userService: UserService) {
     this.open = true;
+    this.userService.user$.subscribe((data)=>{
+      this.user = data;
+    })
   }
 
   ngOnInit(): void {
+   this.user?this.open=true:this.open=false;
   }
 
   /**

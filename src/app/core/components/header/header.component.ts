@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { User } from '../../models/user';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +14,11 @@ export class HeaderComponent implements OnInit {
    * this property is used to activate or desactivate night mode. True by default
    */
   public modeDay: boolean;
-
-  constructor() { this.modeDay = true;}
+  public user$!: Subject<User | null>;
+  constructor(private userService: UserService, private authService: AuthService) {
+    this.modeDay = true;
+    this.user$ = this.userService.user$;
+  }
 
   ngOnInit(): void {
   }
@@ -51,5 +58,9 @@ export class HeaderComponent implements OnInit {
       );
       this.modeDay = !this.modeDay;
     }
+  }
+
+  public signOut(): void{
+    this.authService.signOut();
   }
 }

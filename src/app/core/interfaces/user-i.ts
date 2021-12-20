@@ -4,7 +4,6 @@ export interface UserI {
   grants:	RoleUser;
   id:	number;
   mail:	string;
-  password:	string;
-  token:	string;
+ // password:	string;
   username:	string;
 }

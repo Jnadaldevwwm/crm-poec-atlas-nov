@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RoleUser } from '../enums/role-user';
 import { User } from '../models/user';
@@ -9,6 +9,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
+  public user$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   private collection$!: Observable<User[]>
   private urlApi = environment.urlApi;
@@ -20,6 +21,19 @@ export class UserService {
       })
     );
    }
+   /**
+    * get user
+   */
+   public get user(): BehaviorSubject<User | null>{
+     return this.user$;
+   }
+   /**
+    * set user
+    */
+   public set user(obj: BehaviorSubject<User | null>){
+     this.user$ = obj;
+   }
+
    /**
     * get collection
     */
