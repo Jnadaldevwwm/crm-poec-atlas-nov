@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StateOrder } from '../enums/state-order';
 import { Order } from '../models/order';
@@ -10,22 +10,24 @@ import { Order } from '../models/order';
 })
 export class OrdersService {
 
-  private collection$!: Observable<Order[]>
+  private collection$: BehaviorSubject<Order[]> = new BehaviorSubject([new Order()]);
   private urlApi = environment.urlApi;
   constructor(private http: HttpClient) {
-    this.collection = this.http.get<Order[]>(this.urlApi+'v1/orders');
+    this.refreshCollection();
    }
    /**
     * get collection
     */
-   public get collection(): Observable<Order[]>{
+   public get collection(): BehaviorSubject<Order[]>{
      return this.collection$;
    }
    /**
-    * set collection
+    * refresh collection
     */
-   public set collection(obj: Observable<Order[]>){
-     this.collection$ = obj;
+   public refreshCollection(): void{
+    this.http.get<Order[]>(this.urlApi+'v1/orders').subscribe((data) => {
+      this.collection$.next(data);
+    })
    }
     /**
     * change state item
@@ -42,17 +44,22 @@ export class OrdersService {
      return this.http.put<Order>(
        `${this.urlApi}v1/orders/${item.id}`,
         item
-      );
+      ).pipe(tap(()=> this.refreshCollection()));
    }
    /**
     * add item in collection
     */
    public add(item: Order): Observable<Order>{
-     return this.http.post<Order>(`${this.urlApi}v1/orders`, item);
+     return this.http.post<Order>(`${this.urlApi}v1/orders`, item).pipe(tap(()=> this.refreshCollection()));
    }
    /**
     * delete item from collection
     */
+    public delete(id: number): Observable<Order>{
+      return this.http.delete<Order>(`${this.urlApi}v1/orders/${id}`).pipe(
+        tap(()=>{this.refreshCollection()})
+      );
+    }
 
    /**
     * get item by id from collection

@@ -1,0 +1,21 @@
+<form [formGroup]="form" (ngSubmit)="register()">
+
+  <div class="mb-3">
+    <label for="userName" class="form-label">User Name</label>
+    <input formControlName="userName" type="text" class="form-control" id="userName" autocomplete="off">
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <div class="input-group">
+      <input formControlName="password" [type]="typePwd" class="form-control" id="Password">
+      <span class="input-group-text" (click)="changeType()">
+        <app-icon-eye *ngIf="typePwd === 'password'" ></app-icon-eye>
+        <app-icon-eye-slash *ngIf="typePwd === 'text'"></app-icon-eye-slash>
+      </span>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Sign in</button>
+
+</form>

@@ -3,6 +3,7 @@
     <tr *ngFor="let item of collection">
       <td>
         <app-icon-edit (click)="goToEdit(item.id)"></app-icon-edit>
+        <app-icon-delete (click)="deleteItem(item.id)"></app-icon-delete>
       </td>
       <td>{{item.customerCompany}}</td>
       <td>{{ item.type }}</td>

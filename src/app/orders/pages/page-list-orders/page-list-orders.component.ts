@@ -44,5 +44,10 @@ export class PageListOrdersComponent implements OnInit {
   public goToEdit(id: number): void{
     this.router.navigate(['orders', 'edit',id]);
   }
+  public deleteItem(id: number): void{
+    this.orderService.delete(id).subscribe((response)=>{
+      console.log(response);
 
+    })
+  }
 }
