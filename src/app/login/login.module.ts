@@ -6,6 +6,7 @@ import { FormSignInComponent } from './components/form-sign-in/form-sign-in.comp
 import { LoginRoutingModule } from './login-routing.module';
 import { PageSignInComponent } from './pages/page-sign-in/page-sign-in.component';
 import { PageSignUpComponent } from './pages/page-sign-up/page-sign-up.component';
+import { FormSignUpComponent } from './components/form-sign-up/form-sign-up.component';
 
 
 
@@ -13,7 +14,8 @@ import { PageSignUpComponent } from './pages/page-sign-up/page-sign-up.component
   declarations: [
     PageSignInComponent,
     PageSignUpComponent,
-    FormSignInComponent
+    FormSignInComponent,
+    FormSignUpComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="register()">
+
+  <div class="mb-3">
+    <label for="userName" class="form-label">User Name</label>
+    <input formControlName="username" type="text" class="form-control" id="userName" autocomplete="off">
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">E-Mail</label>
+    <input formControlName="mail" type="text" class="form-control" id="email" autocomplete="off">
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input formControlName="password" type="text" class="form-control" id="Password" autocomplete="off">
+  </div>
+
+  <div class="mb-3">
+    <label for="confirmedPassword" class="form-label">Password</label>
+    <input formControlName="confirmedPassword" type="text" class="form-control" id="confirmedPassword" autocomplete="off">
+  </div>
+
+  <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Sign in</button>
+
+</form>
