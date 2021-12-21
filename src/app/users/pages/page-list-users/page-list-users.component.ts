@@ -14,6 +14,7 @@ export class PageListUsersComponent implements OnInit {
   public headers!: string[];
   public collection$!: Observable<User[]>;
   public roles = Object.values(RoleUser);
+  public filters!: string[];
   constructor(private userService: UserService) {
     this.title = 'List users';
   }
@@ -25,6 +26,7 @@ export class PageListUsersComponent implements OnInit {
       'Mail',
       'Rôles'
     ];
+    this.filters = ['ALL', ...this.roles];
     this.collection$ = this.userService.collection;
   }
   public changeState(item: User,event: any ): void{
@@ -33,5 +35,12 @@ export class PageListUsersComponent implements OnInit {
     this.userService.changeRole(item, state).subscribe((data) => {
       Object.assign(item, data);
     })
+  }
+  public selectItems(expression: string): void{
+    this.userService.getItemsBySearch(expression);
+  }
+
+  public filterItems(expression: string): void{
+    this.userService.getItemsByFilter(expression);
   }
 }

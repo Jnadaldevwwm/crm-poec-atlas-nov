@@ -5,14 +5,14 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { RoleUser } from '../enums/role-user';
 import { User } from '../models/user';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   public token$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>('');
-  constructor(private http: HttpClient, private userService: UserService, private router: Router) { }
+  public user$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+  constructor(private http: HttpClient, private router: Router) { }
   /**
    * get passwrod and username to sign in
    */
@@ -32,7 +32,7 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', JSON.stringify(data.token));
         this.token$.next(data.token);
-        this.userService.user$.next(new User(user));
+        this.user$.next(new User(user));
         this.router.navigate(['orders']);
       })
     )
@@ -42,7 +42,7 @@ export class AuthService {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     this.token$.next(null);
-    this.userService.user$.next(null);
+    this.user$.next(null);
     this.router.navigate(['sign-in']);
   }
 

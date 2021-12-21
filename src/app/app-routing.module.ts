@@ -9,10 +9,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {path: 'clients',
-    loadChildren: ()=> import('./clients/clients.module').then((m)=> m.ClientsModule)
+    loadChildren: ()=> import('./clients/clients.module').then((m)=> m.ClientsModule),
+    canActivate: [AuthGuard]
   },
   {path: 'users',
-  loadChildren: ()=> import('./users/users.module').then((m)=> m.UsersModule)
+  loadChildren: ()=> import('./users/users.module').then((m)=> m.UsersModule),
+  canActivate: [AuthGuard]
   },
   {path: '**',
     loadChildren: ()=> import('./page-not-found/page-not-found.module').then((m)=> m.PageNotFoundModule),

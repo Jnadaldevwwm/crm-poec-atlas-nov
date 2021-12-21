@@ -86,4 +86,22 @@ export class OrdersService {
         })
     }
 
+    public getItemsByFilter(expression: string): void{
+      const upperExpression = expression.toUpperCase();
+      this.http.get<Order[]>(`${this.urlApi}v1/orders`).pipe(
+        tap((data) => {
+          console.log(data.filter((item)=> item.status.toUpperCase() === upperExpression));
+        }),
+        map((data) => {
+          if(upperExpression == "ALL"){
+            return data;
+          }else{
+            return data.filter((item)=> item.status.toUpperCase() === upperExpression);
+          }
+        })
+      ).subscribe((data)=>{
+        this.collection$.next(data);
+      })
+    }
+
 }

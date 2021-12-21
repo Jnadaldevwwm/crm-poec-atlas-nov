@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/models/user';
-import { UserService } from 'src/app/core/services/user.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 /**
  * @description
@@ -17,16 +17,20 @@ export class UiComponent implements OnInit {
    */
   public open!: boolean; // Peut être de type undefined ou boolean.
   public user!: User | null;
-  constructor(private userService: UserService) {
+  constructor(private authService: AuthService) {
     this.open = true;
-    this.userService.user$.subscribe((data)=>{
+    this.authService.user$.subscribe((data)=>{
+      console.log("Constructor de ui : " + data);
       this.user = data;
     })
+
   }
 
   ngOnInit(): void {
    this.user?this.open=true:this.open=false;
   }
+
+
 
   /**
    * @function

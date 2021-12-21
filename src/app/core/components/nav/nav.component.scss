@@ -8,6 +8,12 @@ a{
   background: var(--app-nav-bg-color);
   color: var(--app-light);
   transition: all .2s;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  *:first-child{
+    font-size: 1.5rem;
+  }
 
   &:hover,
   &:focus,
@@ -15,6 +21,7 @@ a{
     background: var(--app-main-bg-color);
     color: var(--app-primary);
   }
+
 }
 
 .dropMenu{

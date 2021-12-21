@@ -15,6 +15,7 @@ export class PageListOrdersComponent implements OnInit {
   public headers!: string[];
   public collection$!: Observable<Order[]>;
   public states = Object.values(StateOrder);
+  public filters!: string[];
   constructor(private orderService: OrdersService, private router: Router) {
     this.title = 'List orders';
   }
@@ -33,6 +34,7 @@ export class PageListOrdersComponent implements OnInit {
       'State',
     ];
     this.collection$ = this.orderService.collection;
+    this.filters = ['ALL', ...this.states];
 
   }
   public changeState(item: Order,event: any ): void{
@@ -53,6 +55,10 @@ export class PageListOrdersComponent implements OnInit {
   }
   public selectItems(expression: string): void{
     this.orderService.getItemsBySearch(expression);
+  }
+
+  public filterItems(expression: string): void{
+    this.orderService.getItemsByFilter(expression);
   }
 
 }

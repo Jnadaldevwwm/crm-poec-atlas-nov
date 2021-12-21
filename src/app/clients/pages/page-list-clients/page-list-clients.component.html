@@ -1,10 +1,19 @@
 <app-template-full-width [title]=title *ngIf="collection">
-  <app-tab-light [headers]=headers>
+  <div class="tr-head">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <app-form-search (expression)="selectItems($event)"></app-form-search>
+      <app-filter [filters]="filters" (filter)="filterItems($event)"></app-filter>
+      <app-btn-route route="add" label="Add Client">
+        <app-icon-plus-circle></app-icon-plus-circle>
+      </app-btn-route>
+    </div>
+  </div>
+  <app-tab-light [headers]=headers class="tr-body">
     <tr *ngFor="let item of collection">
       <td>{{ item.id }}</td>
-      <td>{{ item.lastname }}</td>
-      <td>{{ item.firstname }}</td>
-      <td>{{ item.company }}</td>
+      <td>{{ item.company | uppercase }}</td>
+      <td>{{ item.lastname | titlecase }}</td>
+      <td>{{ item.firstname | titlecase }}</td>
       <td> <a [href]="'mailto:'+ item.mail">{{ item.mail }}</a></td>
       <td><a [href]="'tel:'+item.phone">{{ item.phone }}</a></td>
       <td><a [href]="'tel:'+item.mobile">{{ item.mobile }}</a></td>
@@ -15,5 +24,5 @@
       </td>
     </tr>
   </app-tab-light>
-  <app-btn-route route="add" label="Add Client"></app-btn-route>
+
 </app-template-full-width>

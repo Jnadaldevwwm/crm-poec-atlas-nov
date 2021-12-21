@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +14,9 @@ export class HeaderComponent implements OnInit {
    */
   public modeDay: boolean;
   public user$!: Subject<User | null>;
-  constructor(private userService: UserService, private authService: AuthService) {
+  constructor(private authService: AuthService) {
     this.modeDay = true;
-    this.user$ = this.userService.user$;
+    this.user$ = this.authService.user$;
   }
 
   ngOnInit(): void {

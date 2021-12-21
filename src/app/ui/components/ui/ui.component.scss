@@ -45,7 +45,7 @@ aside{
 
 }
 nav{
-  width: 250px;
+  width: 150px;
   transition: width linear .2s;
 }
 
@@ -55,9 +55,10 @@ nav{
     position: fixed;
   }
   .main{
-    margin-left: 250px;
+    margin-left: 150px;
   }
   .shadow{
     display: none;
   }
 }
+

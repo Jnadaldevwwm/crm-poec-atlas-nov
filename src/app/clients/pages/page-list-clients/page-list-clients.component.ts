@@ -11,6 +11,7 @@ export class PageListClientsComponent implements OnInit {
   public title: string;
   public headers!: string[];
   public collection!: Client[];
+  public filters!: string[];
   constructor(private clientService: ClientsService) {
     this.title = 'List clients';
   }
@@ -18,14 +19,15 @@ export class PageListClientsComponent implements OnInit {
   ngOnInit(): void {
     this.headers = [
       'Id',
+      'Company',
       'Lastname',
       'Firstname',
-      'Company',
       'Email',
       'Phone',
       'Mobile',
       'Active'
     ];
+    this.filters = ['ALL', 'ACTIVE', 'INACTIVE'];
     this.clientService.collection.subscribe((data) => {
       this.collection = data;
     });
@@ -36,5 +38,12 @@ export class PageListClientsComponent implements OnInit {
     this.clientService.changeActive(item).subscribe((data)=>{
       Object.assign(item, data);
     })
+  }
+  public selectItems(expression: string): void{
+    this.clientService.getItemsBySearch(expression);
+  }
+
+  public filterItems(expression: string): void{
+    this.clientService.getItemsByFilter(expression);
   }
 }

@@ -2,11 +2,14 @@
   span{
     text-transform: capitalize;
   }
+  display: flex;
+  align-items:flex-start;
 }
 .signOut{
   cursor: pointer;
   color: var(--app-primary);
   margin-left: 10px;
+  font-size: 1.2rem;
   &:hover{
     color: var(--app-primary-dark);
   }

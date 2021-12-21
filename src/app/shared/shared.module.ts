@@ -13,6 +13,7 @@ import { TabLightComponent } from './components/tab-light/tab-light.component';
 import { StateDirective } from './directives/state.directive';
 import { RolesPipe } from './pipes/roles.pipe';
 import { TotalPipe } from './pipes/total.pipe';
+import { FilterComponent } from './components/filter/filter.component';
 
 
 
@@ -26,7 +27,8 @@ import { TotalPipe } from './pipes/total.pipe';
     TotalPipe,
     StateDirective,
     RolesPipe,
-    FormSearchComponent
+    FormSearchComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { TotalPipe } from './pipes/total.pipe';
     TotalPipe,
     StateDirective,
     RolesPipe,
-    FormSearchComponent
+    FormSearchComponent,
+    FilterComponent
   ]
 })
 export class SharedModule { }
