@@ -18,4 +18,11 @@ export class FilterComponent implements OnInit {
     console.log(target);
 
   }
+  public checkItem(item: string[]){
+    if(item.includes("ROLE_")){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

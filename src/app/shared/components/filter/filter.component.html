@@ -1,6 +1,6 @@
 <div class="filtres">
   <div *ngFor="let item of filters">
-    <label for="filter">{{ item }}</label>
+    <label for="filter">{{ item | roleTransform }}</label>
     <input type="radio" name="filter" id="filter" (click)="sendFilter(item, $event)">
   </div>
 </div>

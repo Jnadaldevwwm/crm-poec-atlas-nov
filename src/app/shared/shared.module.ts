@@ -12,9 +12,9 @@ import { FormSearchComponent } from './components/form-search/form-search.compon
 import { LogoComponent } from './components/logo/logo.component';
 import { TabLightComponent } from './components/tab-light/tab-light.component';
 import { StateDirective } from './directives/state.directive';
-import { RolesTabPipe } from './pipes/roles-tab.pipe';
 import { RolesPipe } from './pipes/roles.pipe';
 import { TotalPipe } from './pipes/total.pipe';
+import { RoleTransformPipe } from './pipes/role-transform.pipe';
 
 
 
@@ -30,7 +30,8 @@ import { TotalPipe } from './pipes/total.pipe';
     RolesPipe,
     FormSearchComponent,
     FilterComponent,
-    RolesTabPipe
+    RoleTransformPipe,
+
   ],
   imports: [
     CommonModule,
@@ -51,7 +52,7 @@ import { TotalPipe } from './pipes/total.pipe';
     RolesPipe,
     FormSearchComponent,
     FilterComponent,
-    RolesTabPipe
+    RoleTransformPipe,
   ]
 })
 export class SharedModule { }
