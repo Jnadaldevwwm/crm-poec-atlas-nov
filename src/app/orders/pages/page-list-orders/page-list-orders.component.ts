@@ -21,6 +21,7 @@ export class PageListOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.headers = [
+      'Action',
       'Client',
       'Type',
       'Description',
@@ -50,7 +51,8 @@ export class PageListOrdersComponent implements OnInit {
 
     })
   }
-  public selectItems(e: Event){
-
+  public selectItems(expression: string): void{
+    this.orderService.getItemsBySearch(expression);
   }
+
 }
