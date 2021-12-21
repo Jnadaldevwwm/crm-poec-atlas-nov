@@ -1,5 +1,5 @@
 <app-template-container title="Sign Up">
-  <app-form-sign-up (submited)="signUp($event)"></app-form-sign-up>
+  <app-form-sign-up (submited)="signUp($event)" [errorExist]="errorExist"></app-form-sign-up>
 
   <a routerLink="/sign-in">Sign in</a>
 </app-template-container>

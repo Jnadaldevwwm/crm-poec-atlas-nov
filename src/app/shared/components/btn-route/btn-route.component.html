@@ -1,1 +1,4 @@
-<a [routerLink]="route" ><button type="button" class="btn btn-primary">{{ label }}</button></a>
+<a [routerLink]="route"  class="btn btn-primary">
+ <span>{{ label }}</span>
+ <ng-content></ng-content>
+</a>

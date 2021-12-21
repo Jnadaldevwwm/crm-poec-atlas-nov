@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./page-sign-up.component.scss']
 })
 export class PageSignUpComponent implements OnInit {
-
+  public errorExist!: boolean;
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -17,6 +17,9 @@ export class PageSignUpComponent implements OnInit {
     console.log(e);
     this.authService.signUp(e).subscribe((response)=>{
       console.log("Réponse : " + response);
+    }, (error)=>{
+      this.errorExist = true;
+      console.error("Utilisateur déja existant");
     });
   }
 }

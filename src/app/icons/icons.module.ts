@@ -13,6 +13,7 @@ import { IconNightModeComponent } from './components/icon-night-mode/icon-night-
 import { IconEyeComponent } from './components/icon-eye/icon-eye.component';
 import { IconEyeSlashComponent } from './components/icon-eye-slash/icon-eye-slash.component';
 import { IconSignOutComponent } from './components/icon-sign-out/icon-sign-out.component';
+import { IconPlusCircleComponent } from './components/icon-plus-circle/icon-plus-circle.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { IconSignOutComponent } from './components/icon-sign-out/icon-sign-out.c
     IconNightModeComponent,
     IconEyeComponent,
     IconEyeSlashComponent,
-    IconSignOutComponent
+    IconSignOutComponent,
+    IconPlusCircleComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +48,8 @@ import { IconSignOutComponent } from './components/icon-sign-out/icon-sign-out.c
     IconNightModeComponent,
     IconEyeComponent,
     IconEyeSlashComponent,
-    IconSignOutComponent
+    IconSignOutComponent,
+    IconPlusCircleComponent
   ]
 })
 export class IconsModule { }

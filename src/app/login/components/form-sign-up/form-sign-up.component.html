@@ -3,6 +3,7 @@
   <div class="mb-3">
     <label for="userName" class="form-label">User Name</label>
     <input formControlName="username" type="text" class="form-control" id="userName" autocomplete="off">
+    <div *ngIf="errorExist" class="error">Username already exist</div>
   </div>
 
   <div class="mb-3">

@@ -50,4 +50,7 @@ export class PageListOrdersComponent implements OnInit {
 
     })
   }
+  public selectItems(e: Event){
+
+  }
 }
